@@ -25,5 +25,6 @@ char    *ft_strjoin(char *s1, char *s2);
 char    *ft_strndup(char *s, int len);
 char    *ft_substr(char *s, int lens, int start, int len);
 size_t  ft_strlen(char  *str);
+void    *ft_calloc(size_t nmemb, size_t size);
 
 #endif

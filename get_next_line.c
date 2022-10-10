@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/10 13:28:07 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/10 17:21:35 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char *get_next_line(int fd)
 	i = ft_strlen(save); 
 	save = ft_substr(save, i, ft_strpimplen(save), i - ft_strpimplen(save));
 	return (ret);
-}/*
+}
 #include <stdio.h>
 int main ()
 {
@@ -73,7 +73,7 @@ int main ()
     }
     int i = 0; 
 	char *str;
-    while (i < 7)
+    while (i < 10)
     {
         printf("Call %d:\n", i + 1);
 		str = get_next_line(fd);
@@ -89,4 +89,4 @@ int main ()
         return (1);
     }
     return (0);
-}*/	
+}
