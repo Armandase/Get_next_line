@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:25:54 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/10 13:19:53 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/18 11:39:05 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 char *get_next_line(int fd);
 char    *ft_strjoin(char *s1, char *s2);
 char    *ft_strndup(char *s, int len);
-char    *ft_substr(char *s, int lens, int start, int len);
+void	ft_substr(char *s);
 size_t  ft_strlen(char  *str);
 void    *ft_calloc(size_t nmemb, size_t size);
 

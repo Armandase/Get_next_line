@@ -1,9 +1,0 @@
-Des appels successifs à votre fonction get_next_line() doivent vous permettre de
-lire l’intégralité du fichier texte référencé par le descripteur de fichier, 
-une ligne à la fois.
-Votre fonction doit retourner la ligne qui vient d’être lue.
-S’il n’y a plus rien à lire, 
-ou en cas d’erreur, 
-elle doit retourner NULL.
-Assurez-vous que votre fonction se comporte correctement qu’elle lise un fichier
-ou qu’elle lise sur l’entrée standard.

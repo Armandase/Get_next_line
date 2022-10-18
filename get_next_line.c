@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/10 17:21:35 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:52:38 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static int	ft_checkline(char	*str)
 {
 	int	i;
-	i = 0;
 
+	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '\n')
@@ -26,67 +26,34 @@ static int	ft_checkline(char	*str)
 	return (0);
 }
 
-static int	ft_strpimplen(char	*str)
+char	*get_next_line(int fd)
 {
-	int	i;
+	static int	i;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*ret;
 
-	i = 0;
-	while(str[i] != '\n' && str[i] != '\0')
-		i++;
-	return (i + 1);
-}
-
-char *get_next_line(int fd)
-{
-	int	i;
-	char	buffer[BUFFER_SIZE + 1];
-	static	char	*save;
-	char	*ret;
-
-	i = read(fd, buffer, BUFFER_SIZE);
-	if (i == -1)
-		return (NULL);
-	buffer[i] = '\0';
-	save = ft_strjoin(save, buffer);
-	while(!ft_checkline(save))
-	{
+	ret = NULL;
+	if (!*buffer)
+	{	
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1 || i == 0)
 			return (NULL);
 		buffer[i] = '\0';
-		save = ft_strjoin(save, buffer);
 	}
-	ret = ft_strndup(save, ft_strpimplen(save));
-	i = ft_strlen(save); 
-	save = ft_substr(save, i, ft_strpimplen(save), i - ft_strpimplen(save));
+	ret = ft_strjoin(ret, buffer);
+	while (!ft_checkline(ret))
+	{
+		if (i == 0 && buffer[0])
+		{
+			free(ret);
+			return (NULL);
+		}
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (i == -1 || i == 0)
+			break ;
+		buffer[i] = '\0';
+		ret = ft_strjoin(ret, buffer);
+	}
+	ft_substr(buffer);
 	return (ret);
-}
-#include <stdio.h>
-int main ()
-{
-    int fd;
-    fd = open("42", O_RDONLY);
-    if (fd == -1)
-    {
-        printf("open error");
-        return (1);
-    }
-    int i = 0; 
-	char *str;
-    while (i < 10)
-    {
-        printf("Call %d:\n", i + 1);
-		str = get_next_line(fd);
-        printf("%s", str);
-		free(str);
-		printf("---------\n");
-        i++;
-    }
-	free(str);
-    if (close(fd) == -1)
-    {
-        printf("close error");
-        return (1);
-    }
-    return (0);
 }
