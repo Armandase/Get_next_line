@@ -6,23 +6,23 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:03:12 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/18 16:50:39 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:06:07 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	ft_strdoublelen(char *s1, char *s2)
+static int	ft_strdoublelen(char *ret, char *buffer)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (s1)
-		while (s1[i])
+	if (ret)
+		while (ret[i])
 			i++;
-	while (s2[j])
+	while (buffer[j])
 	{
 		j++;
 		i++;
@@ -30,37 +30,25 @@ static int	ft_strdoublelen(char *s1, char *s2)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *ret, char *buffer)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	if (!s2)
+	if (!buffer)
 		return (0);
-	i = ft_strdoublelen(s1, s2);
+	i = ft_strdoublelen(ret, buffer);
 	str = ft_calloc(i + 1, sizeof(char));
 	if (!str)
 		return (0);
 	i = 0;
 	j = 0;
-	if (s1)
-		while (s1[j])
-			str[i++] = s1[j++];
-	free(s1);
-	j = 0;
-	while (s2[j])
-	{
-		str[i] = s2[j];
-		if (str[i] == '\n')
-		{
-			i++;
-			break ;
-		}
-		i++;
-		j++;
-	}
-	str[i] = '\0';
+	if (ret)
+		while (ret[j])
+			str[i++] = ret[j++];
+	free(ret);
+	ft_nlcpy(buffer, str, i);
 	return (str);
 }
 

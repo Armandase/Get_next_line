@@ -6,11 +6,31 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/18 16:52:38 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:14:07 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_nlcpy(char *buffer, char *str, int i)
+{
+	int	j;
+
+	j = 0;
+	while (buffer[j])
+	{
+		str[i] = buffer[j];
+		if (str[i] == '\n')
+		{
+			i++;
+			str[i] = '\0';
+			return ;
+		}
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+}
 
 static int	ft_checkline(char	*str)
 {
@@ -22,6 +42,16 @@ static int	ft_checkline(char	*str)
 		if (str[i] == '\n')
 			return (1);
 		i++;
+	}
+	return (0);
+}
+
+static int	end_file(int i, char *buffer, char *ret)
+{
+	if (i == 0 && buffer[0])
+	{
+		free(ret);
+		return (1);
 	}
 	return (0);
 }
@@ -43,11 +73,8 @@ char	*get_next_line(int fd)
 	ret = ft_strjoin(ret, buffer);
 	while (!ft_checkline(ret))
 	{
-		if (i == 0 && buffer[0])
-		{
-			free(ret);
+		if (end_file(i, buffer, ret))
 			return (NULL);
-		}
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1 || i == 0)
 			break ;
