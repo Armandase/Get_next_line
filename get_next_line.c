@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/18 17:14:07 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:28:31 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	end_file(int i, char *buffer, char *ret)
 	if (i == 0 && buffer[0])
 	{
 		free(ret);
+		buffer[0] = '\0';
 		return (1);
 	}
 	return (0);
