@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/21 10:28:31 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:03:23 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ char	*get_next_line(int fd)
 	ret = ft_strjoin(ret, buffer);
 	while (!ft_checkline(ret))
 	{
-		if (end_file(i, buffer, ret))
+		if (end_file(i, buffer, ret) || i == -1)
 			return (NULL);
 		i = read(fd, buffer, BUFFER_SIZE);
-		if (i == -1 || i == 0)
+		if (i == 0)
 			break ;
 		buffer[i] = '\0';
 		ret = ft_strjoin(ret, buffer);
