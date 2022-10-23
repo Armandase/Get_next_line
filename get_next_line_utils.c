@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:03:12 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/18 17:06:07 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/23 10:01:41 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strjoin(char *ret, char *buffer)
 	return (str);
 }
 
-size_t	ft_strlen(char	*str)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 10:13:37 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/21 15:03:23 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/23 10:01:20 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_nlcpy(char *buffer, char *str, int i)
 	str[i] = '\0';
 }
 
-static int	ft_checkline(char	*str)
+static int	ft_checkline(char *str)
 {
 	int	i;
 
