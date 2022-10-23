@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 16:25:54 by adamiens          #+#    #+#             */
-/*   Updated: 2022/10/18 17:08:41 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/23 09:55:25 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
